@@ -23,6 +23,8 @@ fn main() {
 
     let seeds_and_ranges = load_file(&mut map_manager, "data.txt");
 
+    // god bless the rayon library for taking these computations down from 2 hrs to 5 minutes
+
     let collapsed_seeds =  seeds_and_ranges.par_iter().flat_map(|tup| {
         let mut x: Vec<i64> = vec![];
         for item in tup.0..(tup.0 + tup.1) {
